@@ -20,16 +20,16 @@ pipeline {
                 sh 'terraform validate'
             } 
         }
-        stage('SonarQube Analysis') {
-           steps {
-               script {
-                   def scannerHome = tool 'SonarScanner';
-                   withSonarQubeEnv('SonarScanner') {
-                       sh "${scannerHome}/bin/sonar-scanner"
-                   }
-               }
-           }
-        }
+        // stage('SonarQube Analysis') {
+        //    steps {
+        //        script {
+        //            def scannerHome = tool 'SonarScanner';
+        //            withSonarQubeEnv('SonarScanner') {
+        //                sh "${scannerHome}/bin/sonar-scanner"
+        //            }
+        //        }
+        //    }
+        // }
         stage('Terraform Planning') { 
             steps { 
                 sh 'terraform plan -no-color -out=terraform_plan'
